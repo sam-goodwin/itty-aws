@@ -11,5 +11,14 @@
         }
       ]
     }
+  },
+  "structures": {
+    "ScheduledAction": {
+      "members": {
+        "ScalableDimension": {
+          "optional": false
+        }
+      }
+    }
   }
 }

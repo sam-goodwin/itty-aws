@@ -1013,7 +1013,7 @@ export interface ScheduledAction {
   Schedule: string;
   Timezone?: string;
   ResourceId: string;
-  ScalableDimension?: ScalableDimension;
+  ScalableDimension: ScalableDimension;
   StartTime?: Date;
   EndTime?: Date;
   ScalableTargetAction?: ScalableTargetAction;
@@ -1027,7 +1027,7 @@ export const ScheduledAction = /*@__PURE__*/ S.suspend(() =>
     Schedule: S.String,
     Timezone: S.optional(S.String),
     ResourceId: S.String,
-    ScalableDimension: S.optional(ScalableDimension),
+    ScalableDimension: ScalableDimension,
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     ScalableTargetAction: S.optional(ScalableTargetAction),
